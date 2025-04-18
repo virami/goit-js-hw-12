@@ -8,11 +8,217 @@
 @import url('./reset.css');
 @import url('./base.css');
 @import url('./container.css');
-@import url('./animations.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1440px;
+  padding: 36px 5%;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.form-input {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 272px;
+  height: 40px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #808080;
+  padding: 0 8px;
+}
+
+.form-input:focus {
+  border: 1px solid #4e75ff;
+  outline: none;
+}
+
+.form-input:hover {
+  border-color:  #000;
+}
+
+.button {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 91px;
+  height: 40px;
+  border: none;
+  background: #4e75ff;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  cursor: pointer;
+}
+
+.error-icon {
+  width: 432px;
+
+font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.03em;
+color: #fafafb;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #808080;
+  width: 100%;
+  max-width: 360px;
+}
+
+.gallery-link {
+  display: block;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 18 / 10;
+  object-fit: cover;
+}
+
+.gallery-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 4px;
+}
+
+.gallery-info-item {
+ font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  font-size: 12px;
+  
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.gallery-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.gallery-button {
+font-weight: 500;
+font-size: 16px;
+
+line-height: 1.5;
+letter-spacing: 0.04em;
+color: #fff;
+
+border-radius: 8px;
+padding: 8px 16px;
+width: 125px;
+height: 40px;
+border: none;
+
+background: #4e75ff;
+
+
+}
+
+.button:hover,
+.gallery-button:hover {
+  background: #6c8cff;
+  border: none;
+}
+
+/* Адаптивні стилі для маленьких екранів */
+@media (max-width: 768px) {
+  .form {
+    justify-content: center;
+  }
+
+  .form-input,
+  .button {
+    max-width: 100%;
+  }
+
+  .gallery {
+    gap: 16px;
+  }
+
+  .gallery-item {
+    max-width: 100%;
+  }
+}
+
+/* ============= scroll ==================== */
+
+
+/* ============== loader ================ */
+
+.is-hidden {
+  display: none;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+}
+.loader::before , .loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite ;
+}
+.loader::after{
+  inset: 8px;
+  transform: rotate3d(90, 90, 0, 180deg );
+  border-color: #4e75ff;
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+}
